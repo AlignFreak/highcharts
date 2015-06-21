@@ -30,15 +30,17 @@
 	        },
 	        xAxis: {
 	        	type: 'datetime',
-	        	title: 'test',
-	        	tickPixelInterval: 150
+	        	tickPixelInterval: 150,
+	        	title: {
+	        		text: 'test',
+	        	}
 	        },
 
 	        series: [{}]
 	    };
 
 	    $.getJSON('data.json', function(data) {
-	    	options.series[1].data = data;
+	    	options.series[0].data = data;
 	    	var chart = new Highcharts.Chart(options);
 	    });
 
