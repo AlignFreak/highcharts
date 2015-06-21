@@ -8,43 +8,22 @@
 <body>
 <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <script type="text/javascript">
-	$(document).ready(function() {
+$(document).ready(function() {
 
-	    var options = {
-	        chart: {
-	        	renderTo: 'container',
-	        	type: 'spline'/*,
-	        	animation: Highcharts.svg, // don't animate in old IE
-	        	marginRight: 10*//*,
-	        	events: {
-	        		load: function () {
-	        			// set up the updating of the chart each second
-	        			var series = this.series[0];
-	        			setInterval(function () {
-	        				var x = (new Date()).getTime(), // current time
-	        				y = Math.random();
-	        				series.addPoint([x, y], true, true);
-	        			}, 1000);
-	        		}
-	        	}*/
-	        },
-	       /* xAxis: {
-	        	type: 'datetime',
-	        	tickPixelInterval: 150,
-	        	title: {
-                    text: 'Value'
-                },
-	        },*/
+    var options = {
+        chart: {
+            renderTo: 'container',
+            type: 'spline'
+        },
+        series: [{}]
+    };
 
-	        series: [{}]
-	    };
+    $.getJSON('data.json', function(data) {
+        options.series[0].data = data;
+        var chart = new Highcharts.Chart(options);
+    });
 
-	    $.getJSON('data.json', function(data) {
-	    	options.series[0].data = data;
-	    	var chart = new Highcharts.Chart(options);
-	    });
-
-	});
+});
 </script>
 </body>
 </html>
