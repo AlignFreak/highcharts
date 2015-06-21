@@ -5,6 +5,7 @@
 <script src="http://code.highcharts.com/highcharts.js"></script>
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
 
+
 </head>
 <body>
 <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
@@ -20,7 +21,7 @@ $(function () {
         $('#container').highcharts({
             chart: {
                 renderTo: 'container',
-            type: 'spline'
+            type: 'spline',
                 animation: Highcharts.svg, // don't animate in old IE
                 marginRight: 10,
                 events: {
