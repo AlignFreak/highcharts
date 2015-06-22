@@ -105,12 +105,6 @@ $(function () {
         series: [{}]
     };
 
-    $.getJSON('data2.json', function(data) {
-        options.series[0].data = data;
-        var chart = new Highcharts.Chart(options);
-    });
-
-
     // Add mouse events for rotation
     $(chart.container).bind('mousedown.hc touchstart.hc', function (e) {
         e = chart.pointer.normalize(e);
@@ -139,6 +133,11 @@ $(function () {
                 $(document).unbind('.hc');
             }
         });
+    });
+
+    $.getJSON('data2.json', function(data) {
+        options.series[0].data = data;
+        var chart = new Highcharts.Chart(options);
     });
 
 });
