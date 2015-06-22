@@ -18,7 +18,7 @@
 <div id="container" style="height: 400px"></div>
 <script type="text/javascript">
 $(function () {
-    var chart;
+    var chart = new Highcharts.Chart(options);
 
     // Give the points a 3D feel by adding a radial gradient
     Highcharts.getOptions().colors = $.map(Highcharts.getOptions().colors, function (color) {
@@ -33,11 +33,6 @@ $(function () {
                 [1, Highcharts.Color(color).brighten(-0.2).get('rgb')]
             ]
         };
-    });
-
-        $.getJSON('data2.json', function(data) {
-        options.series[0].data = data;
-        var chart = new Highcharts.Chart(options);
     });
 
     // Set up the chart
@@ -109,6 +104,11 @@ $(function () {
         }]*/
         series: [{}]
     };
+
+    $.getJSON('data2.json', function(data) {
+        options.series[0].data = data;
+    });
+
 
     // Add mouse events for rotation
     $(chart.container).bind('mousedown.hc touchstart.hc', function (e) {
