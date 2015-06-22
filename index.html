@@ -35,6 +35,11 @@ $(function () {
         };
     });
 
+        $.getJSON('data2.json', function(data) {
+        options.series[0].data = data;
+        var chart = new Highcharts.Chart(options);
+    });
+
     // Set up the chart
     var options = {
         chart: {
@@ -133,11 +138,6 @@ $(function () {
                 $(document).unbind('.hc');
             }
         });
-    });
-
-    $.getJSON('data2.json', function(data) {
-        options.series[0].data = data;
-        var chart = new Highcharts.Chart(options);
     });
 
 });
