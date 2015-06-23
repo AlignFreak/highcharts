@@ -1,5 +1,13 @@
 $(function () {
 
+    $.getJSON('data.json', function(data) {
+
+        var chart1 = data[5];
+        console.log(chart1);
+        
+        options.series[0].data = data;
+    });
+
     // Give the points a 3D feel by adding a radial gradient
     Highcharts.getOptions().colors = $.map(Highcharts.getOptions().colors, function (color) {
         return {
@@ -155,9 +163,7 @@ $(function () {
         series: [{}]
     };
 
-    $.getJSON('data.json', function(data) {
-        options.series[0].data = data;
-    });
+    
 
     var chart = new Highcharts.Chart(options);
 
