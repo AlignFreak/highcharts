@@ -3,6 +3,12 @@ $(function () {
     $.getJSON('data.json', function(data) {
 
         var chart1 = data[5];
+
+        var mydata = JSON.parse(data);
+        alert(mydata[0].name);
+        alert(mydata[0].age);
+        alert(mydata[1].name);
+        alert(mydata[1].age);
         console.log(chart1);
         
         options.series[0].data = data;
