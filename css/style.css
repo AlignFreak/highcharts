@@ -1,0 +1,14 @@
+.container {
+	background: cyan;
+}
+
+.column {
+	width: 90%;
+	padding: 15px;
+	margin: 0 auto;
+	background: green;
+}
+
+.form-horizontal .control-label {
+	text-align: left;
+}

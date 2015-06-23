@@ -1,21 +1,103 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 	<script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="http://code.highcharts.com/highcharts-3d.js"></script>
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
-    <style type="text/css">
-        #container {
-            height: 400px;
-            min-width: 310px;
-            max-width: 800px;
-            margin: 0 auto;
-            }
-    </style>
+    
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/bootstrap.min.js"></script>
+
 </head>
 <body>
-<div id="container" style="height: 400px"></div>
+<div class="container">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <h1>UNIT 1</h1>
+        <div class="column first">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="stateUnit1" class="col-xs-9 control-label">State UNIT 1:</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" id="stateUnit1" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="stateUnit2" class="col-xs-9 control-label">State UNIT 2:</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" id="stateUnit2" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="realignment" class="col-xs-9 control-label">Nr. realignment:</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" id="realignment" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="centrePower" class="col-xs-9 control-label">Centre power:</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" id="centrePower" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="bestMeasuremnt" class="col-xs-9 control-label">Best measuremnt:</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" id="bestMeasuremnt" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="treshold" class="col-xs-9 control-label">Treshold:</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" id="treshold" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="air" class="col-xs-9 control-label">Temperature - air:</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" id="air" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="plastic" class="col-xs-9 control-label">Temperature - plastic:</label>
+                    <div class="col-xs-3">
+                        <input type="text" class="form-control" id="plastic" placeholder="">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="column">
+            <div id="chart1" class="chart">
+                
+            </div>
+            <div id="chart2" class="chart">
+                
+            </div>
+            <div id="chart3" class="chart">
+                
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-5">
+        <div class="column last">
+            <div id="chart4" class="chart2">
+                
+            </div>
+            <div id="chart5" class="chart2">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <script type="text/javascript">
 $(function () {
 
@@ -37,7 +119,7 @@ $(function () {
     // Set up the chart
     var options = {
         chart: {
-            renderTo: 'container',
+            renderTo: 'chart5',
             margin: 100,
             type: 'scatter',
             options3d: {
