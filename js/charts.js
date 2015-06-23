@@ -1,6 +1,6 @@
 $(function () {
 
-    $.getJSON('data.json', function(data) {
+    $.getJSON('js/data.json', function(data) {
 
         var chart1 = data[5];
 
