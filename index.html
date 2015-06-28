@@ -1,109 +1,208 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="http://code.highcharts.com/highcharts.js"></script>
-    <script src="http://code.highcharts.com/highcharts-3d.js"></script>
-    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Highcharts Demo - jsFiddle demo</title>
+  
+  <script type='text/javascript' src='//code.jquery.com/jquery-1.9.1.js'></script>
+  
+  
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+  <style type='text/css'>
     
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/charts.js"></script>
+  </style>
+  
+
+
+<script type='text/javascript'>//<![CDATA[ 
+
+$(function () {
+    $(document).ready(function () {
+        Highcharts.setOptions({
+            global: {
+                useUTC: false
+            }
+        });
+
+        $('#container').highcharts({
+            chart: {
+                type: 'spline',
+                animation: Highcharts.svg, // don't animate in old IE
+                marginRight: 10,
+                events: {
+                    load: function () {
+
+                        // set up the updating of the chart each second
+                        var series1 = this.series[0];
+                        var series2 = this.series[1];
+                        var series3 = this.series[2];
+                        
+                        setInterval(function () {
+                            var vrednostY1=0;
+                            var vrednostY2=0;
+                            var vrednostY3=0;
+                            $.ajax({
+                              url: 'http://www.utrosa.com/sebi/last_state.json?rand='+Math.random(),
+                              dataType: 'json',
+                              async: false,
+                              success: function(data) {
+                                vrednostY1=data.state1;
+                                vrednostY2=data.state13;
+                                vrednostY3=data.state14;
+                              }
+                            });
+                            //console.log(vrednostY1) ;
+                            
+                            var x = (new Date()).getTime(), // current time
+                                y1 = vrednostY1,
+                                y2 = vrednostY2,
+                                y3 = vrednostY3;
+                            
+                            series1.addPoint([x, y1], true, true);
+                            series2.addPoint([x, y2], true, true);
+                            series3.addPoint([x, y3], true, true);
+                        }, 1000);
+                    }
+                }
+            },
+            title: {
+                text: 'Live random data'
+            },
+            xAxis: {
+                type: 'datetime',
+                tickPixelInterval: 150
+            },
+            yAxis: {
+                title: {
+                    text: 'Value'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                        Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+                        Highcharts.numberFormat(this.y, 2);
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            exporting: {
+                enabled: false
+            },
+            series: [{
+                name: 'State 1',
+                data: (function () {
+                    // generate an array of random data
+                    var data = [],
+                        time = (new Date()).getTime(),
+                        i;
+
+                    for (i = -19; i <= 0; i += 1) {
+                        data.push({
+                            x: time + i * 1000,
+                            y: 0
+                        });
+                    }
+                    return data;
+                }())
+            },
+            {
+                name: 'State 2',
+                data: (function () {
+                    // generate an array of random data
+                    var data = [],
+                        time = (new Date()).getTime(),
+                        i;
+
+                    for (i = -19; i <= 0; i += 1) {
+                        data.push({
+                            x: time + i * 1000,
+                            y: 0
+                        });
+                    }
+                    return data;
+                }())
+            },
+            {
+                name: 'State 3',
+                data: (function () {
+                    // generate an array of random data
+                    var data = [],
+                        time = (new Date()).getTime(),
+                        i;
+
+                    for (i = -19; i <= 0; i += 1) {
+                        data.push({
+                            x: time + i * 1000,
+                            y: 0
+                        });
+                    }
+                    return data;
+                }())
+            }]
+        });
+    });
+});
+//]]>  
+
+</script>
+
+
+<script type='text/javascript'>//<![CDATA[ 
+
+$(function () {
+    $(document).ready(function () {
+
+    setInterval(function () {
+        $.ajax({
+          url: 'http://www.utrosa.com/sebi/last_state.json?rand='+Math.random(),
+          dataType: 'json',
+          async: false,
+          success: function(data) {
+            console.log(data.state1);
+            $('#status1').val(data.state1);
+            $('#status2').val(data.state2);
+            $('#status3').val(data.state3);
+            $('#status4').val(data.state4);
+            $('#status5').val(data.state5);
+          }
+        });
+    }, 1000);
+                        
+    });
+});
+//]]>  
+
+</script>
+
 
 </head>
 <body>
-    <div class="container">
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-            <h1>UNIT 1</h1>
-            <div class="column first">
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <label for="stateUnit1" class="col-xs-6 control-label">State UNIT 1:</label>
-                        <div class="col-xs-3">
-                            <input type="text" class="form-control" id="stateUnit1" placeholder="">
-                        </div>
-                        <span class="col-xs-3">Enota</span>
-                    </div>
-                    <div class="form-group">
-                        <label for="stateUnit2" class="col-xs-6 control-label">State UNIT 2:</label>
-                        <div class="col-xs-3">
-                            <input type="text" class="form-control" id="stateUnit2" placeholder="">
-                        </div>
-                        <span class="col-xs-3">Enota</span>
-                    </div>
-                    <div class="form-group">
-                        <label for="realignment" class="col-xs-6 control-label">Nr. realignment:</label>
-                        <div class="col-xs-3">
-                            <input type="text" class="form-control" id="realignment" placeholder="">
-                        </div>
-                        <span class="col-xs-3">Enota</span>
-                    </div>
-                    <div class="form-group">
-                        <label for="centrePower" class="col-xs-6 control-label">Centre power:</label>
-                        <div class="col-xs-3">
-                            <input type="text" class="form-control" id="centrePower" placeholder="">
-                        </div>
-                        <span class="col-xs-3">Enota</span>
-                    </div>
-                    <div class="form-group">
-                        <label for="bestMeasuremnt" class="col-xs-6 control-label">Best measuremnt:</label>
-                        <div class="col-xs-3">
-                            <input type="text" class="form-control" id="bestMeasuremnt" placeholder="">
-                        </div>
-                        <span class="col-xs-3">Enota</span>
-                    </div>
-                    <div class="form-group">
-                        <label for="treshold" class="col-xs-6 control-label">Treshold:</label>
-                        <div class="col-xs-3">
-                            <input type="text" class="form-control" id="treshold" placeholder="">
-                        </div>
-                        <span class="col-xs-3">Enota</span>
-                    </div>
-                    <div class="form-group">
-                        <label for="air" class="col-xs-6 control-label">Temperature - air:</label>
-                        <div class="col-xs-3">
-                            <input type="text" class="form-control" id="air" placeholder="">
-                        </div>
-                        <span class="col-xs-3">Enota</span>
-                    </div>
-                    <div class="form-group">
-                        <label for="plastic" class="col-xs-6 control-label">Temperature - plastic:</label>
-                        <div class="col-xs-3">
-                            <input type="text" class="form-control" id="plastic" placeholder="">
-                        </div>
-                        <span class="col-xs-3">Enota</span>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="column">
-                <div id="chart1" class="chart">
-                    
-                </div>
-                <div id="chart2" class="chart">
-                    
-                </div>
-                <div id="chart3" class="chart">
-                    
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-5">
-            <div class="column last">
-                <div id="chart4" class="chart2">
-                    
-                </div>
-                <div id="chart5" class="chart2">
-                    
-                </div>
-            </div>
-        </div>
-    </div>
+  <script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+status1: <input id="status1" name="status1" type="text" /><br />
+status2: <input id="status2" name="status2" type="text" /><br />
+status3: <input id="status3" name="status3" type="text" /><br />
+status4: <input id="status4" name="status4" type="text" /><br />
+status5: <input id="status5" name="status5" type="text" /><br />
+
+
+  
 </body>
+
+
 </html>
+
