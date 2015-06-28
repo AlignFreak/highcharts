@@ -48,6 +48,12 @@ h2 {
 h4 {
     padding-top:10px;
 }
+
+h3 input {
+    text-align: center;
+    border: none;
+}
+
 .square-btn-adjust {
     border: 0px solid transparent; 
    -webkit-border-radius: 0px;

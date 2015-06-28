@@ -1,338 +1,725 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Free Bootstrap Admin Template : Dream</title>
-    <!-- Bootstrap Styles-->
-    <link href="assets/css/bootstrap.css" rel="stylesheet" />
-    <!-- FontAwesome Styles-->
-    <link href="assets/css/font-awesome.css" rel="stylesheet" />
-    <!-- Morris Chart Styles-->
-    <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
-    <!-- Custom Styles-->
-    <link href="assets/css/custom-styles.css" rel="stylesheet" />
-    <!-- Google Fonts-->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-   
+		<title>UNIT 1</title>
 
-<script type='text/javascript'>//<![CDATA[ 
+		<!-- Bootstrap Styles-->
+	    <link href="assets/css/bootstrap.css" rel="stylesheet" />
 
-$(function () {
-    $(document).ready(function () {
-        Highcharts.setOptions({
-            global: {
-                useUTC: false
-            }
-        });
+	    <!-- FontAwesome Styles-->
+	    <link href="assets/css/font-awesome.css" rel="stylesheet" />
 
-        $('#container').highcharts({
-            chart: {
-                type: 'spline',
-                animation: Highcharts.svg, // don't animate in old IE
-                marginRight: 10,
-                events: {
-                    load: function () {
+	    <!-- Custom Styles-->
+	    <link href="assets/css/custom-styles.css" rel="stylesheet" />
 
-                        // set up the updating of the chart each second
-                        var series1 = this.series[0];
-                        var series2 = this.series[1];
-                        var series3 = this.series[2];
-                        
-                        setInterval(function () {
-                            var vrednostY1=0;
-                            var vrednostY2=0;
-                            var vrednostY3=0;
-                            $.ajax({
-                              url: 'http://alignfreak.github.io/highcharts/last_state.json?rand='+Math.random(),
-                              dataType: 'json',
-                              async: false,
-                              success: function(data) {
-                                vrednostY1=data.state1;
-                                vrednostY2=data.state13;
-                                vrednostY3=data.state14;
-                              }
-                            });
-                            //console.log(vrednostY1) ;
-                            
-                            var x = (new Date()).getTime(), // current time
-                                y1 = vrednostY1,
-                                y2 = vrednostY2,
-                                y3 = vrednostY3;
-                            
-                            series1.addPoint([x, y1], true, true);
-                            series2.addPoint([x, y2], true, true);
-                            series3.addPoint([x, y3], true, true);
-                        }, 1000);
-                    }
-                }
-            },
-            title: {
-                text: 'Live random data'
-            },
-            xAxis: {
-                type: 'datetime',
-                tickPixelInterval: 150
-            },
-            yAxis: {
-                title: {
-                    text: 'Value'
-                },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }]
-            },
-            tooltip: {
-                formatter: function () {
-                    return '<b>' + this.series.name + '</b><br/>' +
-                        Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
-                        Highcharts.numberFormat(this.y, 2);
-                }
-            },
-            legend: {
-                enabled: false
-            },
-            exporting: {
-                enabled: false
-            },
-            series: [{
-                name: 'State 1',
-                data: (function () {
-                    // generate an array of random data
-                    var data = [],
-                        time = (new Date()).getTime(),
-                        i;
+	    <!-- Google Fonts-->
+	    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 
-                    for (i = -19; i <= 0; i += 1) {
-                        data.push({
-                            x: time + i * 1000,
-                            y: 0
-                        });
-                    }
-                    return data;
-                }())
-            },
-            {
-                name: 'State 2',
-                data: (function () {
-                    // generate an array of random data
-                    var data = [],
-                        time = (new Date()).getTime(),
-                        i;
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-                    for (i = -19; i <= 0; i += 1) {
-                        data.push({
-                            x: time + i * 1000,
-                            y: 0
-                        });
-                    }
-                    return data;
-                }())
-            },
-            {
-                name: 'State 3',
-                data: (function () {
-                    // generate an array of random data
-                    var data = [],
-                        time = (new Date()).getTime(),
-                        i;
+	    <script type='text/javascript'>//<![CDATA[ 
+	    	$(function () {
+	    		$(document).ready(function () {
+	    			Highcharts.setOptions({
+	    				global: {
+	    					useUTC: false
+	    				}
+	    			});
 
-                    for (i = -19; i <= 0; i += 1) {
-                        data.push({
-                            x: time + i * 1000,
-                            y: 0
-                        });
-                    }
-                    return data;
-                }())
-            }]
-        });
-    });
-});
-//]]>  
+	    			//Local RX for local movement
+	    			$('#container1').highcharts({
+	    				chart: {
+	    					type: 'spline',
+	    					animation: Highcharts.svg, // don't animate in old IE
+	    					marginRight: 10,
+	    					events: {
+	    						load: function () {
 
-</script>
+	    							// set up the updating of the chart each second
+	    							var series1 = this.series[0];
+	    							var series2 = this.series[1];
+	    							var series3 = this.series[2];
 
-    <script type='text/javascript'>//<![CDATA[ 
+	    							setInterval(function () {
+	    								var vrednostY1=0;
+	    								var vrednostY2=0;
+	    								var vrednostY3=0;
 
-$(function () {
-    $(document).ready(function () {
+	    								$.ajax({
+	    									url: 'http://alignfreak.github.io/highcharts/last_state.json?rand='+Math.random(),
+	    									dataType: 'json',
+	    									async: false,
+	    									success: function(data) {
+	    										vrednostY1=data.state6;
+	    										vrednostY2=data.state7;
+	    										vrednostY3=data.state17;
+	    									}
+	    								});
 
-    setInterval(function () {
-        $.ajax({
-          url: 'http://alignfreak.github.io/highcharts/last_state.json?rand='+Math.random(),
-          dataType: 'json',
-          async: false,
-          success: function(data) {
-            console.log(data.state1);
-            $('#status1').val(data.state1);
-            $('#status6').val(data.state6);
-            $('#status7').val(data.state7);
-            $('#status13').val(data.state13);
-            $('#status14').val(data.state14);
-            $('#status16').val(data.state16);
-            $('#status17').val(data.state17);
-            $('#status21').val(data.state21);
-            $('#status22').val(data.state22);
-            $('#status23').val(data.state23);
-          }
-        });
-    }, 1000);
-                        
-    });
-});
-//]]>  
+	    								var x = (new Date()).getTime(), // current time
+	    								y1 = vrednostY1,
+	    								y2 = vrednostY2,
+	    								y3 = vrednostY3;
 
-</script>
+	    								series1.addPoint([x, y1], true, true);
+	    								series2.addPoint([x, y2], true, true);
+	    								series3.addPoint([x, y3], true, true);
+	    							}, 1000);
+	    						}
+	    					}
+	    				},
 
-</head>
+	    				title: {
+	    					text: 'Local RX for local movement'
+	    				},
 
-<body>
-    <div id="wrapper">
-          
-        
-        
-        <div id="page-wrapper">
-            <div id="page-inner">
+	    				xAxis: {
+	    					type: 'datetime',
+	    					tickPixelInterval: 150
+	    				},
+	    				
+	    				yAxis: {
+	    					title: {
+	    						text: 'Value'
+	    					},
 
+	    					plotLines: [{
+	    						value: 0,
+	    						width: 1,
+	    						color: '#808080'
+	    					}]
+	    				},
 
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="page-header">
-                            UNIT 1 <small>Lorem ipsum</small>
-                        </h1>
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-md-1 col-sm-6 col-xs-12">
-                        <div class="panel panel-primary text-center no-boder bg-color-green">
-                            <div class="panel-body">
-                                
-                                <h3><input id="status1" name="status1" type="text" class="col-xs-12"/></h3>
-                            </div>
-                            <div class="panel-footer back-footer-green">
-                                State UNIT 1
+	    				tooltip: {
+	    					formatter: function () {
+	    						return '<b>' + this.series.name + '</b><br/>' +
+	    						Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+	    						Highcharts.numberFormat(this.y, 2);
+	    					}
+	    				},
 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-6 col-xs-12">
-                        <div class="panel panel-primary text-center no-boder bg-color-blue">
-                            <div class="panel-body">
-                                
-                                <h3><input id="status2" name="status2" type="text" class="col-xs-12"/></h3>
-                            </div>
-                            <div class="panel-footer back-footer-blue">
-                                Sales
+	    				legend: {
+	    					enabled: false
+	    				},
 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-6 col-xs-12">
-                        <div class="panel panel-primary text-center no-boder bg-color-red">
-                            <div class="panel-body">
-                                
-                                <h3><input id="status3" name="status3" type="text" class="col-xs-12"/></h3>
-                            </div>
-                            <div class="panel-footer back-footer-red">
-                                Comments
+	    				exporting: {
+	    					enabled: false
+	    				},
 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-6 col-xs-12">
-                        <div class="panel panel-primary text-center no-boder bg-color-brown">
-                            <div class="panel-body">
-                                
-                                <h3><input id="status4" name="status4" type="text" class="col-xs-12"/></h3>
-                            </div>
-                            <div class="panel-footer back-footer-brown">
-                                No. of Visits
+	    				series: [{
+	    					name: 'State 1',
+	    					data: (function () {
+	    						// generate an array of random data
+	    						var data = [],
+	    						time = (new Date()).getTime(),
+	    						i;
 
-                            </div>
-                        </div>
-                    </div>
+	    						for (i = -19; i <= 0; i += 1) {
+	    							data.push({
+	    								x: time + i * 1000,
+	    								y: 0
+	    							});
+	    						}
+	    						return data;
+	    					}())
+	    				},
+	    				{
+	    					name: 'State 2',
+	    					data: (function () {
+	    						// generate an array of random data
+	    						var data = [],
+	    						time = (new Date()).getTime(),
+	    						i;
 
-                    <div class="col-md-1 col-sm-6 col-xs-12">
-                        <div class="panel panel-primary text-center no-boder bg-color-brown">
-                            <div class="panel-body">
-                                
-                                <h3><input id="status4" name="status4" type="text" class="col-xs-12"/></h3>
-                            </div>
-                            <div class="panel-footer back-footer-brown">
-                                No. of Visits
+	    						for (i = -19; i <= 0; i += 1) {
+	    							data.push({
+	    								x: time + i * 1000,
+	    								y: 0
+	    							});
+	    						}
+	    						return data;
+	    					}())
+	    				},
+	    				{
+	    					name: 'State 3',
+	    					data: (function () {
+	    						// generate an array of random data
+	    						var data = [],
+	    						time = (new Date()).getTime(),
+	    						i;
 
-                            </div>
-                        </div>
-                    </div>
+	    						for (i = -19; i <= 0; i += 1) {
+	    							data.push({
+	    								x: time + i * 1000,
+	    								y: 0
+	    							});
+	    						}
+	    						return data;
+	    					}())
+	    				}]
+	    			});
 
-                    <div class="col-md-1 col-sm-6 col-xs-12">
-                        <div class="panel panel-primary text-center no-boder bg-color-brown">
-                            <div class="panel-body">
-                                
-                                <h3><input id="status4" name="status4" type="text" class="col-xs-12"/></h3>
-                            </div>
-                            <div class="panel-footer back-footer-brown">
-                                No. of Visits
+	    			//RemoteRX for local movement
+	    			$('#container2').highcharts({
+	    				chart: {
+	    					type: 'spline',
+	    					animation: Highcharts.svg, // don't animate in old IE
+	    					marginRight: 10,
+	    					events: {
+	    						load: function () {
 
-                            </div>
-                        </div>
-                    </div>
+	    							// set up the updating of the chart each second
+	    							var series1 = this.series[0];
+	    							var series2 = this.series[1];
+	    							var series3 = this.series[2];
 
-                    <div class="col-md-1 col-sm-6 col-xs-12">
-                        <div class="panel panel-primary text-center no-boder bg-color-brown">
-                            <div class="panel-body">
-                                
-                                <h3><input id="status4" name="status4" type="text" class="col-xs-12"/></h3>
-                            </div>
-                            <div class="panel-footer back-footer-brown">
-                                No. of Visits
+	    							setInterval(function () {
+	    								var vrednostY1=0;
+	    								var vrednostY2=0;
+	    								var vrednostY3=0;
 
-                            </div>
-                        </div>
-                    </div>
+	    								$.ajax({
+	    									url: 'http://alignfreak.github.io/highcharts/last_state.json?rand='+Math.random(),
+	    									dataType: 'json',
+	    									async: false,
+	    									success: function(data) {
+	    										vrednostY1=data.state6;
+	    										vrednostY2=data.state7;
+	    										vrednostY3=data.state21;
+	    									}
+	    								});
 
-                    <div class="col-md-1 col-sm-6 col-xs-12">
-                        <div class="panel panel-primary text-center no-boder bg-color-brown">
-                            <div class="panel-body">
-                                
-                                <h3><input id="status4" name="status4" type="text" class="col-xs-12"/></h3>
-                            </div>
-                            <div class="panel-footer back-footer-brown">
-                                No. of Visits
+	    								var x = (new Date()).getTime(), // current time
+	    								y1 = vrednostY1,
+	    								y2 = vrednostY2,
+	    								y3 = vrednostY3;
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
+	    								series1.addPoint([x, y1], true, true);
+	    								series2.addPoint([x, y2], true, true);
+	    								series3.addPoint([x, y3], true, true);
+	    							}, 1000);
+	    						}
+	    					}
+	    				},
 
-<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+	    				title: {
+	    					text: 'RemoteRX for local movement'
+	    				},
 
-				
-            </div>
-            <!-- /. PAGE INNER  -->
-        </div>
-        <!-- /. PAGE WRAPPER  -->
-    </div>
-    <!-- /. WRAPPER  -->
-    <!-- JS Scripts-->
-    
-    <!-- Bootstrap Js -->
-    <script src="assets/js/bootstrap.min.js"></script>
-    
-    <!-- Custom Js -->
-    <!-- <script src="assets/js/custom-scripts.js"></script> -->
+	    				xAxis: {
+	    					type: 'datetime',
+	    					tickPixelInterval: 150
+	    				},
+	    				
+	    				yAxis: {
+	    					title: {
+	    						text: 'Value'
+	    					},
 
+	    					plotLines: [{
+	    						value: 0,
+	    						width: 1,
+	    						color: '#808080'
+	    					}]
+	    				},
 
-  <script src="http://code.highcharts.com/highcharts.js"></script>
-<script src="http://code.highcharts.com/modules/exporting.js"></script>
+	    				tooltip: {
+	    					formatter: function () {
+	    						return '<b>' + this.series.name + '</b><br/>' +
+	    						Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+	    						Highcharts.numberFormat(this.y, 2);
+	    					}
+	    				},
 
-</body>
+	    				legend: {
+	    					enabled: false
+	    				},
 
+	    				exporting: {
+	    					enabled: false
+	    				},
+
+	    				series: [{
+	    					name: 'State 1',
+	    					data: (function () {
+	    						// generate an array of random data
+	    						var data = [],
+	    						time = (new Date()).getTime(),
+	    						i;
+
+	    						for (i = -19; i <= 0; i += 1) {
+	    							data.push({
+	    								x: time + i * 1000,
+	    								y: 0
+	    							});
+	    						}
+	    						return data;
+	    					}())
+	    				},
+	    				{
+	    					name: 'State 2',
+	    					data: (function () {
+	    						// generate an array of random data
+	    						var data = [],
+	    						time = (new Date()).getTime(),
+	    						i;
+
+	    						for (i = -19; i <= 0; i += 1) {
+	    							data.push({
+	    								x: time + i * 1000,
+	    								y: 0
+	    							});
+	    						}
+	    						return data;
+	    					}())
+	    				},
+	    				{
+	    					name: 'State 3',
+	    					data: (function () {
+	    						// generate an array of random data
+	    						var data = [],
+	    						time = (new Date()).getTime(),
+	    						i;
+
+	    						for (i = -19; i <= 0; i += 1) {
+	    							data.push({
+	    								x: time + i * 1000,
+	    								y: 0
+	    							});
+	    						}
+	    						return data;
+	    					}())
+	    				}]
+	    			});
+
+					//Temperature 1,2,3
+	    			$('#container3').highcharts({
+	    				chart: {
+	    					type: 'spline',
+	    					animation: Highcharts.svg, // don't animate in old IE
+	    					marginRight: 10,
+	    					events: {
+	    						load: function () {
+
+	    							// set up the updating of the chart each second
+	    							var series1 = this.series[0];
+	    							var series2 = this.series[1];
+	    							var series3 = this.series[2];
+
+	    							setInterval(function () {
+	    								var vrednostY1=0;
+	    								var vrednostY2=0;
+	    								var vrednostY3=0;
+
+	    								$.ajax({
+	    									url: 'http://alignfreak.github.io/highcharts/last_state.json?rand='+Math.random(),
+	    									dataType: 'json',
+	    									async: false,
+	    									success: function(data) {
+	    										vrednostY1=data.state1;
+	    										vrednostY2=data.state13;
+	    										vrednostY3=data.state14;
+	    									}
+	    								});
+
+	    								var x = (new Date()).getTime(), // current time
+	    								y1 = vrednostY1,
+	    								y2 = vrednostY2,
+	    								y3 = vrednostY3;
+
+	    								series1.addPoint([x, y1], true, true);
+	    								series2.addPoint([x, y2], true, true);
+	    								series3.addPoint([x, y3], true, true);
+	    							}, 1000);
+	    						}
+	    					}
+	    				},
+
+	    				title: {
+	    					text: 'Temperature 1,2,3'
+	    				},
+
+	    				xAxis: {
+	    					type: 'datetime',
+	    					tickPixelInterval: 150
+	    				},
+	    				
+	    				yAxis: {
+	    					title: {
+	    						text: 'Value'
+	    					},
+
+	    					plotLines: [{
+	    						value: 0,
+	    						width: 1,
+	    						color: '#808080'
+	    					}]
+	    				},
+
+	    				tooltip: {
+	    					formatter: function () {
+	    						return '<b>' + this.series.name + '</b><br/>' +
+	    						Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+	    						Highcharts.numberFormat(this.y, 2);
+	    					}
+	    				},
+
+	    				legend: {
+	    					enabled: false
+	    				},
+
+	    				exporting: {
+	    					enabled: false
+	    				},
+
+	    				series: [{
+	    					name: 'State 1',
+	    					data: (function () {
+	    						// generate an array of random data
+	    						var data = [],
+	    						time = (new Date()).getTime(),
+	    						i;
+
+	    						for (i = -19; i <= 0; i += 1) {
+	    							data.push({
+	    								x: time + i * 1000,
+	    								y: 0
+	    							});
+	    						}
+	    						return data;
+	    					}())
+	    				},
+	    				{
+	    					name: 'State 2',
+	    					data: (function () {
+	    						// generate an array of random data
+	    						var data = [],
+	    						time = (new Date()).getTime(),
+	    						i;
+
+	    						for (i = -19; i <= 0; i += 1) {
+	    							data.push({
+	    								x: time + i * 1000,
+	    								y: 0
+	    							});
+	    						}
+	    						return data;
+	    					}())
+	    				},
+	    				{
+	    					name: 'State 3',
+	    					data: (function () {
+	    						// generate an array of random data
+	    						var data = [],
+	    						time = (new Date()).getTime(),
+	    						i;
+
+	    						for (i = -19; i <= 0; i += 1) {
+	    							data.push({
+	    								x: time + i * 1000,
+	    								y: 0
+	    							});
+	    						}
+	    						return data;
+	    					}())
+	    				}]
+	    			});
+
+					//Alignment variables
+	    			$('#container4').highcharts({
+	    				chart: {
+	    					type: 'spline',
+	    					animation: Highcharts.svg, // don't animate in old IE
+	    					marginRight: 10,
+	    					events: {
+	    						load: function () {
+
+	    							// set up the updating of the chart each second
+	    							var series1 = this.series[0];
+	    							var series2 = this.series[1];
+	    							var series3 = this.series[2];
+
+	    							setInterval(function () {
+	    								var vrednostY1=0;
+	    								var vrednostY2=0;
+	    								var vrednostY3=0;
+
+	    								$.ajax({
+	    									url: 'http://alignfreak.github.io/highcharts/last_state.json?rand='+Math.random(),
+	    									dataType: 'json',
+	    									async: false,
+	    									success: function(data) {
+	    										vrednostY1=data.state16;
+	    										vrednostY2=data.state22;
+	    										vrednostY3=data.state23;
+	    									}
+	    								});
+
+	    								var x = (new Date()).getTime(), // current time
+	    								y1 = vrednostY1,
+	    								y2 = vrednostY2,
+	    								y3 = vrednostY3;
+
+	    								series1.addPoint([x, y1], true, true);
+	    								series2.addPoint([x, y2], true, true);
+	    								series3.addPoint([x, y3], true, true);
+	    							}, 1000);
+	    						}
+	    					}
+	    				},
+
+	    				title: {
+	    					text: 'Alignment variables'
+	    				},
+
+	    				xAxis: {
+	    					type: 'datetime',
+	    					tickPixelInterval: 150
+	    				},
+	    				
+	    				yAxis: {
+	    					title: {
+	    						text: 'Value'
+	    					},
+
+	    					plotLines: [{
+	    						value: 0,
+	    						width: 1,
+	    						color: '#808080'
+	    					}]
+	    				},
+
+	    				tooltip: {
+	    					formatter: function () {
+	    						return '<b>' + this.series.name + '</b><br/>' +
+	    						Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+	    						Highcharts.numberFormat(this.y, 2);
+	    					}
+	    				},
+
+	    				legend: {
+	    					enabled: false
+	    				},
+
+	    				exporting: {
+	    					enabled: false
+	    				},
+
+	    				series: [{
+	    					name: 'State 1',
+	    					data: (function () {
+	    						// generate an array of random data
+	    						var data = [],
+	    						time = (new Date()).getTime(),
+	    						i;
+
+	    						for (i = -19; i <= 0; i += 1) {
+	    							data.push({
+	    								x: time + i * 1000,
+	    								y: 0
+	    							});
+	    						}
+	    						return data;
+	    					}())
+	    				},
+	    				{
+	    					name: 'State 2',
+	    					data: (function () {
+	    						// generate an array of random data
+	    						var data = [],
+	    						time = (new Date()).getTime(),
+	    						i;
+
+	    						for (i = -19; i <= 0; i += 1) {
+	    							data.push({
+	    								x: time + i * 1000,
+	    								y: 0
+	    							});
+	    						}
+	    						return data;
+	    					}())
+	    				},
+	    				{
+	    					name: 'State 3',
+	    					data: (function () {
+	    						// generate an array of random data
+	    						var data = [],
+	    						time = (new Date()).getTime(),
+	    						i;
+
+	    						for (i = -19; i <= 0; i += 1) {
+	    							data.push({
+	    								x: time + i * 1000,
+	    								y: 0
+	    							});
+	    						}
+	    						return data;
+	    					}())
+	    				}]
+	    			});
+
+				});
+			});
+		//]]>  
+		</script>
+
+		<script type='text/javascript'>//<![CDATA[ 
+			$(function () {
+				$(document).ready(function () {
+
+					setInterval(function () {
+						$.ajax({
+							url: 'http://alignfreak.github.io/highcharts/last_state.json?rand='+Math.random(),
+							dataType: 'json',
+							async: false,
+							success: function(data) {
+								console.log(data.state1);
+								$('#status1').val(data.state1);
+								$('#status6').val(data.state6);
+								$('#status7').val(data.state7);
+								$('#status13').val(data.state13);
+								$('#status14').val(data.state14);
+								$('#status16').val(data.state16);
+								$('#status17').val(data.state17);
+								$('#status21').val(data.state21);
+								$('#status22').val(data.state22);
+								$('#status23').val(data.state23);
+							}
+						});
+					}, 1000);
+				});
+			});
+			//]]>  
+		</script>
+	</head>
+
+	<body>
+		<div id="wrapper">
+			<div id="page-wrapper">
+				<div id="page-inner">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="page-header">
+								UNIT 1 <small>Lorem ipsum</small>
+							</h1>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-1 col-md-2 col-sm-4 col-xs-6">
+							<div class="panel panel-primary text-center no-boder bg-color-blue">
+								<div class="panel-body">
+									<h3><input id="status6" name="status6" type="text" class="col-xs-12"/></h3>
+								</div>
+								<div class="panel-footer back-footer-blue">state 6</div>
+							</div>
+						</div>
+
+						<div class="col-lg-1 col-md-2 col-sm-4 col-xs-6">
+							<div class="panel panel-primary text-center no-boder bg-color-blue">
+								<div class="panel-body">
+									<h3><input id="status7" name="status7" type="text" class="col-xs-12"/></h3>
+								</div>
+								<div class="panel-footer back-footer-blue">state 7</div>
+							</div>
+						</div>
+
+						<div class="col-lg-1 col-md-2 col-sm-4 col-xs-6">
+							<div class="panel panel-primary text-center no-boder bg-color-blue">
+								<div class="panel-body">
+									<h3><input id="status17" name="status17" type="text" class="col-xs-12"/></h3>
+								</div>
+								<div class="panel-footer back-footer-blue">state 17</div>
+							</div>
+						</div>
+
+						<div class="col-lg-1 col-md-2 col-sm-4 col-xs-6">
+							<div class="panel panel-primary text-center no-boder bg-color-blue">
+								<div class="panel-body">
+									<h3><input id="status21" name="status21" type="text" class="col-xs-12"/></h3>
+								</div>
+								<div class="panel-footer back-footer-blue">state 21</div>
+							</div>
+						</div>
+
+						<div class="col-lg-1 col-md-2 col-sm-4 col-xs-6">
+							<div class="panel panel-primary text-center no-boder bg-color-green">
+								<div class="panel-body">
+									<h3><input id="status1" name="status1" type="text" class="col-xs-12"/></h3>
+								</div>
+								<div class="panel-footer back-footer-green">state 1</div>
+							</div>
+						</div>
+
+						<div class="col-lg-1 col-md-2 col-sm-4 col-xs-6">
+							<div class="panel panel-primary text-center no-boder bg-color-green">
+								<div class="panel-body">
+									<h3><input id="status13" name="status13" type="text" class="col-xs-12"/></h3>
+								</div>
+								<div class="panel-footer back-footer-green">state 13</div>
+							</div>
+						</div>
+
+						<div class="col-lg-1 col-md-2 col-sm-4 col-xs-6">
+							<div class="panel panel-primary text-center no-boder bg-color-green">
+								<div class="panel-body">
+									<h3><input id="status14" name="status14" type="text" class="col-xs-12"/></h3>
+								</div>
+								<div class="panel-footer back-footer-green">state 14</div>
+							</div>
+						</div>
+
+						<div class="col-lg-1 col-md-2 col-sm-4 col-xs-6">
+							<div class="panel panel-primary text-center no-boder bg-color-brown">
+								<div class="panel-body">
+									<h3><input id="status16" name="status16" type="text" class="col-xs-12"/></h3>
+								</div>
+								<div class="panel-footer back-footer-brown">state 16</div>
+							</div>
+						</div>
+
+						<div class="col-lg-1 col-md-2 col-sm-4 col-xs-6">
+							<div class="panel panel-primary text-center no-boder bg-color-brown">
+								<div class="panel-body">
+									<h3><input id="status22" name="status22" type="text" class="col-xs-12"/></h3>
+								</div>
+								<div class="panel-footer back-footer-brown">state 22</div>
+							</div>
+						</div>
+
+						<div class="col-lg-1 col-md-2 col-sm-4 col-xs-6">
+							<div class="panel panel-primary text-center no-boder bg-color-brown">
+								<div class="panel-body">
+									<h3><input id="status23" name="status23" type="text" class="col-xs-12"/></h3>
+								</div>
+								<div class="panel-footer back-footer-brown">state 23</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div id="container1" class="col-xs-12 col-sm-6 col-md-3"></div>
+						<div id="container2" class="col-xs-12 col-sm-6 col-md-3"></div>
+						<div id="container3" class="col-xs-12 col-sm-6 col-md-3"></div>
+						<div id="container4" class="col-xs-12 col-sm-6 col-md-3"></div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	    <!-- JS Scripts-->
+	    
+	    <!-- Bootstrap Js -->
+	    <script src="assets/js/bootstrap.min.js"></script>
+	    
+	    <!-- Custom Js -->
+	    <!-- <script src="assets/js/custom-scripts.js"></script> -->
+
+	    <script src="http://code.highcharts.com/highcharts.js"></script>
+	    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+	</body>
 </html>
