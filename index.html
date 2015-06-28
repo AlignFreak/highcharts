@@ -17,32 +17,8 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script type='text/javascript'>//<![CDATA[ 
+   
 
-$(function () {
-    $(document).ready(function () {
-
-    setInterval(function () {
-        $.ajax({
-          url: 'http://alignfreak.github.io/highcharts/last_state.json?rand='+Math.random(),
-          dataType: 'json',
-          async: false,
-          success: function(data) {
-            console.log(data.state1);
-            $('#status1').val(data.state1);
-            $('#status2').val(data.state2);
-            $('#status3').val(data.state3);
-            $('#status4').val(data.state4);
-            $('#status5').val(data.state5);
-          }
-        });
-    }, 1000);
-                        
-    });
-});
-//]]>  
-
-</script>
 <script type='text/javascript'>//<![CDATA[ 
 
 $(function () {
@@ -176,6 +152,33 @@ $(function () {
                 }())
             }]
         });
+    });
+});
+//]]>  
+
+</script>
+
+    <script type='text/javascript'>//<![CDATA[ 
+
+$(function () {
+    $(document).ready(function () {
+
+    setInterval(function () {
+        $.ajax({
+          url: 'http://alignfreak.github.io/highcharts/last_state.json?rand='+Math.random(),
+          dataType: 'json',
+          async: false,
+          success: function(data) {
+            console.log(data.state1);
+            $('#status1').val(data.state1);
+            $('#status2').val(data.state2);
+            $('#status3').val(data.state3);
+            $('#status4').val(data.state4);
+            $('#status5').val(data.state5);
+          }
+        });
+    }, 1000);
+                        
     });
 });
 //]]>  
