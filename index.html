@@ -572,10 +572,8 @@
 				$(document).ready(function () {
 
 					setInterval(function () {
-
-						var request = $.ajax({
-							url: 'json.php',
-    
+						$.ajax({
+							url: 'json.php?rand='+Math.random(),
 							dataType: 'json',
 							async: false,
 							success: function(data) {
