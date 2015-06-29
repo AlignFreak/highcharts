@@ -50,7 +50,7 @@
 	    								var vrednostY3=0;
 
 	    								$.ajax({
-	    									url: 'http://wwk-3a.cams.wlan-si.net/last_state.json?rand='+Math.random(),
+	    									url: 'http://alignfreak.github.io/highcharts/last_state.json?rand='+Math.random(),
 	    									dataType: 'json',
 	    									async: false,
 	    									success: function(data) {
@@ -183,7 +183,7 @@
 	    								var vrednostY3=0;
 
 	    								$.ajax({
-	    									url: 'http://wwk-3a.cams.wlan-si.net/last_state.json?rand='+Math.random(),
+	    									url: 'http://alignfreak.github.io/highcharts/last_state.json?rand='+Math.random(),
 	    									dataType: 'json',
 	    									async: false,
 	    									success: function(data) {
@@ -316,7 +316,7 @@
 	    								var vrednostY3=0;
 
 	    								$.ajax({
-	    									url: 'json.php?rand='+Math.random(),
+	    									url: 'http://alignfreak.github.io/highcharts/last_state.json?rand='+Math.random(),
 	    									dataType: 'json',
 	    									async: false,
 	    									success: function(data) {
@@ -449,7 +449,7 @@
 	    								var vrednostY3=0;
 
 	    								$.ajax({
-	    									url: 'http://wwk-3a.cams.wlan-si.net/last_state.json?rand='+Math.random(),
+	    									url: 'http://alignfreak.github.io/highcharts/last_state.json?rand='+Math.random(),
 	    									dataType: 'json',
 	    									async: false,
 	    									success: function(data) {
@@ -572,8 +572,10 @@
 				$(document).ready(function () {
 
 					setInterval(function () {
-						$.ajax({
-							url: 'http://wwk-3a.cams.wlan-si.net/last_state.json?rand='+Math.random(),
+
+						var request = $.ajax({
+							url: 'json.php',
+    
 							dataType: 'json',
 							async: false,
 							success: function(data) {
