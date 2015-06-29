@@ -52,6 +52,7 @@ h4 {
 h3 input {
     text-align: center;
     border: none;
+    font-size: .75em;
 }
 
 .square-btn-adjust {
@@ -224,6 +225,10 @@ color: #8d8888;
 }
 footer p{
 font-size: 14px;
+}
+
+.panel-body {
+	padding: 15px 0;
 }
 /*----------------------------------------------
     MENU STYLES    
